@@ -1,13 +1,11 @@
 function seg = multi_kmeans(I, qtdTresh)
    
-    %[L,Centers] = imsegkmeans(I,qtdTresh);
-    %B = labeloverlay(I,L);
-    %B = label2rgb(L);
     
     image = I;
     k = qtdTresh;
     % Cluster.
-    clustered = reshape(kmeans(image(:), k), size(image));
+    clustered = reshape(imsegkmeans(image(:), k), size(image));
+    
     % Sort clusters.
     clustermeans = zeros(k, 1);
     for j = 1:k
@@ -24,10 +22,6 @@ function seg = multi_kmeans(I, qtdTresh)
         clustermeans(clustermeans == min(clustermeans)) = NaN;
     end
     clustered = sortidx(clustered);
-    
-    figure(2);
-    imshow(clustered, []);
-    title('Labeled Image');
-    seg = clustered
+    seg = clustered;
     
 end
