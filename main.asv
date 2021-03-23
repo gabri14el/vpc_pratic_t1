@@ -79,12 +79,8 @@ for i = 1: length(arquivos)
         hold off;
     end
     
-    %saveas(1,strcat('results/otsu_', arquivos(i).name));
-    %saveas(2,strcat('results/kmeans_', arquivos(i).name));
-    print(1, '-dpng', strcat('results/otsu_', arquivos(i).name), '-r300')
-    print(2, '-dpng', strcat('results/kmeans_', arquivos(i).name), '-r300')
-    %pause();
-    
+    saveas(1,filename)
+    pause();
     %limpa as figuras casos elas estejam abertas
     if ishandle(1)
         clf(1);
